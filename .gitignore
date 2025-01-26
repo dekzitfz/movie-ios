@@ -1,0 +1,73 @@
+### Xcode ###
+# User settings
+*.xcuserstate
+*.xcuserdatad/
+*.xccheckout
+
+# Build artifacts
+build/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Workspace/project auto-generated files
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcworkspace/contents.xcworkspacedata
+
+# Swift Package Manager
+.swiftpm/
+.checkouts/
+
+# Interface Builder
+*.intentdefinitioncompiled
+*.mlmodelc
+
+### Dependency Managers ###
+# CocoaPods (uncomment if using)
+# Pods/
+# Podfile.lock
+
+# Carthage (uncomment if using)
+# Carthage/Build/
+
+# Swift Package Manager (legacy)
+Package.resolved
+
+### Testing/Profiling ###
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+
+# Snapshot testing
+*.png
+*.diff.png
+
+# Instruments
+*.trace
+
+### Environment ###
+# Local configuration files
+.env
+.env.local
+secrets.xcconfig
+
+# Crashlytics/Firebase
+GoogleService-Info.plist
+crashlytics-build.properties
+
+### System ###
+# macOS
+.DS_Store
+._*
+
+# Editor-specific
+.idea/
+.vscode/
+
+# Miscellaneous
+*.moved-aside
+*.orig
+*.log
