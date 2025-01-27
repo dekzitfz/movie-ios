@@ -7,12 +7,12 @@
 import SwiftUI
 
 struct MovieRow: View {
-    let movie: Movie
+    let movie: MovieItem
     
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
             //image view
-            AsyncImage(url: URL(string: movie.imageUrl)) { phase in
+            AsyncImage(url: movie.posterURL) { phase in
                 switch phase {
                 case .empty:
                     ProgressView()
@@ -30,7 +30,7 @@ struct MovieRow: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(movie.title)
                     .font(.headline)
-                Text(movie.genre.rawValue)
+                Text(movie.overview)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }

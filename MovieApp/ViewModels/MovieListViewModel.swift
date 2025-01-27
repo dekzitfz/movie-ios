@@ -11,9 +11,11 @@ import SwiftUI
 final class MovieListViewModel: ObservableObject {
     private let service: MovieServiceProtocol
     
-    @Published var movies: [Movie] = []
+    @Published var movies: [MovieItem] = []
+    @Published var currentPage = 1
+    @Published var totalPages = 1
     @Published var errorMessage: String?
-    @Published var viewState: ViewState = ViewState.loading
+    @Published var viewState: ViewState = .loading
     
     enum ViewState {
         case loading, content, error
@@ -24,11 +26,20 @@ final class MovieListViewModel: ObservableObject {
     }
     
     func fetchMovies() async {
-        viewState = .loading
+        guard currentPage <= totalPages else { return }
+        
+        //manage view state
+        viewState = currentPage == 1 ? .loading : .content
+        
         do {
-            movies = try await service.fetchMovies()
+            let (newMovies, totalPages) = try await service.fetchMovies(page: currentPage)
+            self.totalPages = totalPages
+            
+            movies += newMovies
             viewState = .content
+            currentPage += 1
         } catch {
+            debugPrint(error)
             errorMessage = error.localizedDescription
             viewState = .error
         }

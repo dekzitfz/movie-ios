@@ -22,3 +22,7 @@ struct ErrorView: View {
         }
     }
 }
+
+#Preview {
+    ErrorView(message: "Unknown Error", action: {})
+}

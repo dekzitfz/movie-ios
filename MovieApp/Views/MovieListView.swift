@@ -18,6 +18,11 @@ struct MovieListView: View {
                 case .content:
                     List(viewModel.movies) { movie in
                         MovieRow(movie: movie)
+                            .onAppear{
+                                if movie == viewModel.movies.last {
+                                    Task { await viewModel.fetchMovies() }
+                                }
+                            }
                     }
                     .listStyle(.plain)
                 case .error:
